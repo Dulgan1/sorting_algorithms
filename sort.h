@@ -34,4 +34,13 @@ void print_list(const listint_t *list);
  */
 
 void bubble_sort(int *array, size_t size);
+
+/**
+ * selection_sort - sorts and array of size using selection sort algorithm
+ * @array: the array to be sorted
+ * @size: soze of the array
+ * Return: void
+ */
+
+void selection_sort(int *array, size_t size);
 #endif
