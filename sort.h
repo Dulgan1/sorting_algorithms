@@ -1,7 +1,15 @@
 #ifndef SORT_H
 #define SORT_H
+#include <stddef.h>
+
+typedef struct listint_s
+{
+	const int n;
+	struct listint_s *next;
+} listint_t;
 
 /**
+ *
  * print_array - prints content of an array
  * @array: array to iterately print its content
  * @size: size of the array
