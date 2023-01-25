@@ -2,6 +2,13 @@
 #define SORT_H
 #include <stddef.h>
 
+/**
+ * struct listint_s - doubly linked list with int as data
+ * @n: data
+ * @next: pointer to next
+ * @prev: pointer to previous
+ */
+
 typedef struct listint_s
 {
 	const int n;
@@ -10,7 +17,6 @@ typedef struct listint_s
 } listint_t;
 
 /**
- *
  * print_array - prints content of an array
  * @array: array to iterately print its content
  * @size: size of the array
@@ -88,7 +94,8 @@ void swap(int *x, int *y);
  * insertion_sort_list - sorts a doubly linked list using insertion sorting
  * @list: doubly linked list to sort
  */
-                                                                           void insertion_sort_list(listint_t **list);
+
+void insertion_sort_list(listint_t **list);
 
 /**
  * print_list - Prints a list of integers
