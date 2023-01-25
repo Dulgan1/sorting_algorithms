@@ -2,25 +2,22 @@
 #include <stdio.h>
 
 /**
- * _quick_sort - sorts an array using the quick sort algorithm
+ * __qsort - sorts an array using the quick sort algorithm
  * @array: array to be sorted
  * @size: size of the array
  * @start: the start of the array
  * @end: end of array
  */
 
-void _qsort(int *array, size_t start, size_t end, size_t size)
+void __qsort(int *array, int start, int end, int size)
 {
 	int pivot;
 
 	if (start < end)
 	{
-		pivot = partition(array, start, end);
-		printf("Partition done\n");
-		_qsort(array, start, pivot - 1, size);
-		printf("First rec\n");
-		_qsort(array, pivot + 1, end, size);
-		printf("Second rec\n");
+		pivot = partition(array, start, end, size);
+		__qsort(array, start, pivot - 1, size);
+		__qsort(array, pivot + 1, end, size);
 	}
 	else
 		return;
@@ -37,7 +34,7 @@ void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
 		return;
-	_qsort(array, 0, size - 1, size);
+	__qsort(array, 0, size - 1, size);
 }
 
 /**
@@ -49,7 +46,7 @@ void quick_sort(int *array, size_t size)
  * Return: index of pivot
  */
 
-int partition(int *array, int start, int end)
+int partition(int *array, int start, int end, int size)
 {
 	int pivot = array[end];
 	int i = start;
@@ -59,11 +56,19 @@ int partition(int *array, int start, int end)
 	{
 		if (array[j] <= pivot)
 		{
-			swap(&array[i], &array[j]);
+			if (i != j)
+			{
+				swap(&array[i], &array[j]);
+				print_array(array, size);
+			}
 			i++;
 		}
 	}
-	swap(&array[i], &array[end]);
+	if (i != end)
+	{
+		swap(&array[i], &array[end]);
+		print_array(array, size);
+	}
 
 	return (i);
 }
